@@ -7,7 +7,7 @@ var bookModel = new Schema({
   },
   author: { type: String },
   genre: { type: String },
-  response: { type: Object },
+  response: { type: Arrays },
   created: { type: Date },
   read: { type: Boolean, default: false }
 });
