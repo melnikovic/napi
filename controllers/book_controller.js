@@ -1,9 +1,6 @@
 var bookController = function(Book) {
 
   var post = function (req, res) {
-    if(!req.body.response){
-      req.body.response = {"string1": "strinResp"};
-    }
     var book = new Book(req.body);
 
     if(!req.body.title) {
@@ -16,7 +13,7 @@ var bookController = function(Book) {
       res.status(201);
       res.send(book);
     }
-  }
+  };
 
   var get = function(req, res) {
     var query = {};
