@@ -1,6 +1,9 @@
 var bookController = function(Book) {
 
   var post = function (req, res) {
+    if(!req.body.response){
+      req.body.response = {"string1": "strinResp"};
+    }
     var book = new Book(req.body);
 
     if(!req.body.title) {
