@@ -7,6 +7,7 @@ var bookController = function(Book) {
       res.status(400);
       res.send('Title is required');
     } else {
+      book.response = {"test1": "testX"};
       book.save();
 
       // Separated those calls so the tests can sucess
