@@ -8,7 +8,7 @@ var bookController = function(Book) {
       res.send('Title is required');
     } else {
       // Added current datetime when creating
-      book.createdDate = new Date();
+      if(!req.body.createdDate) book.createdDate = new Date();
       book.save();
 
       // Separated those calls so the tests can sucess
