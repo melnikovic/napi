@@ -2,14 +2,12 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 var bookModel = new Schema({
-  title: {
-    type: String
-  },
-  author: { type: String },
-  genre: { type: String },
+  title: { type: String },
   response: { type: Array },
-  created: { type: Date },
-  read: { type: Boolean, default: false }
+  createdDate: { type: Date },
+  lastUsed: { type: Date },
+  used: { type: Number },
+  status: { type: Number, default: 200}
 });
 
 module.exports = mongoose.model('Book', bookModel);

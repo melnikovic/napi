@@ -73,6 +73,6 @@ var routes = function(Book) {
 
 
   return bookRouter;
-}
+};
 
 module.exports = routes;

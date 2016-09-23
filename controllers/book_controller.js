@@ -7,7 +7,8 @@ var bookController = function(Book) {
       res.status(400);
       res.send('Title is required');
     } else {
-        console.log(book);
+      // Added current datetime when creating
+      book.createdDate = new Date();
       book.save();
 
       // Separated those calls so the tests can sucess
@@ -37,6 +38,6 @@ var bookController = function(Book) {
     get: get
   }
 
-}
+};
 
 module.exports = bookController;
