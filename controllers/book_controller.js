@@ -3,9 +3,9 @@ var bookController = function(Book) {
   var post = function (req, res) {
     var book = new Book(req.body);
 
-    if(!req.body.title) {
+    if(!req.body.name) {
       res.status(400);
-      res.send('Title is required');
+      res.send('Name is required');
     } else {
       // Added current datetime when creating
       book.createdDate = new Date();

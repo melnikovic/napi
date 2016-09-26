@@ -35,43 +35,32 @@ var routes = function(Book) {
       // Since we already got the 'book' from database across the "bookRouter.use('/:bookId')" middleware
       // We just have to send it to the response and don't have to treat errors because the middleware is already treating it
       var fetchedEndpoint = req.book; // Fetched book retrived from the database by the middleware
+      if(fetchedEndpoint.method !== 1) res.status(404).send('No endpoint found');
       var delay = fetchedEndpoint.delay || 0;
       setTimeout(function(){
-        res.status(fetchedEndpoint.status).send(fetchedEndpoint.response);
+        //res.status(fetchedEndpoint.statusCode).send(fetchedEndpoint.output);
+        res.json(fetchedEndpoint.output);
       }, delay);
     })
 
     // > update
     .put(function(req, res) {
-      var fetchedBook = req.book; // Fetched book retrived from the database by the middleware
-      if(req.body._id) {
-        delete req.body._id; // Doesn't allow to update the id even if its on the body of the request
-      }
-
-      // Update only the attributes that are present on the body of the request
-      for(var attribute in req.body) {
-        fetchedBook[attribute] = req.body[attribute];
-      }
-
-      fetchedBook.save(function(err) {
-        if(err) {
-          res.status(500).send(err);
-        } else {
-          res.json(fetchedBook);
-        }
-      });
+      var fetchedEndpoint = req.book; // Fetched book retrived from the database by the middleware
+      if(fetchedEndpoint.method !== 1) res.status(404).send('No endpoint found');
+      var delay = fetchedEndpoint.delay || 0;
+      setTimeout(function(){
+        res.status(fetchedEndpoint.statusCode).send('PUT METHOD');
+      }, delay);
     })
 
     // > destroy
     .delete(function(req, res) {
-      var fetchedBook = req.book;
-      fetchedBook.remove(function (err) {
-        if(err) {
-          res.status(500).send(err);
-        } else {
-          res.status(204).send('Book removed.');
-        }
-      })
+      var fetchedEndpoint = req.book; // Fetched book retrived from the database by the middleware
+      if(fetchedEndpoint.method !== 1) res.status(404).send('No endpoint found');
+      var delay = fetchedEndpoint.delay || 0;
+      setTimeout(function(){
+        res.status(fetchedEndpoint.statusCode).send('DELETE METHOD');
+      }, delay);
     });
 
 
