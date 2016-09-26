@@ -3,6 +3,7 @@ var mongoose = require('mongoose'),
 
 var bookModel = new Schema({
   title: { type: String },
+  delay: { type: Number },
   response: { type: Array },
   createdDate: { type: Date },
   lastUsed: { type: Date },

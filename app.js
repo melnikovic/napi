@@ -21,8 +21,10 @@ app.use(bodyParser.json());
 
 
 
-var bookRouter = require('./routes/book_routes.js')(Book);
+var bookRouter = require('./routes/book_routes')(Book);
+var endpointRouter = require('./routes/endpoint_routes')(Book);
 app.use('/api/books', bookRouter);
+app.use('/api/endpoints', endpointRouter);
 
 app.get('/', function(req, res) {
   res.send("Hello world");
